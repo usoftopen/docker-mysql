@@ -1,0 +1,15 @@
+version: '3'
+services:
+
+  mysql:
+      image: mysql:5.7
+      ports:
+        - "3306:3306"
+      volumes:
+        - ./data:/var/lib/mysql:rw
+        - ./config/mysql.cnf:/etc/mysql/conf.d/mysql.cnf:ro
+        - ./log:/var/log/mysql:rw
+      restart: always
+      privileged: true
+      environment:
+        MYSQL_ROOT_PASSWORD: MYSQL
